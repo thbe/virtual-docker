@@ -7,7 +7,8 @@
 #
 
 ### Get current operating system ###
-if $(grep Fedora /etc/redhat-release); then
+DISTSWITCH=$(grep Fedora /etc/redhat-release | wc -l)
+if [ "x$DISTSWITCH" = "x1"  ]; then
   DIST=fedora
   MAJORVER=$(grep Fedora /etc/redhat-release | cut -d ' ' -f3)
 else
