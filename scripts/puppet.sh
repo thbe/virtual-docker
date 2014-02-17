@@ -41,5 +41,4 @@ yum clean all && yum -y update
 yum -y install puppet
 
 ### Show result ###
-echo
-echo "Docker container prepared for Puppet operations ..."
+echo "Docker container prepared for Puppet ..."
