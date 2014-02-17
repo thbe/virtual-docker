@@ -14,7 +14,7 @@
 # USAGE:
 #   wget https://raw2.github.com/thbe/virtual-docker/master/sl/Dockerfile
 #   docker build -t="thbe/slc6p" -rm .
-#   docker run -name slc6-puppet thbe/slc6p -rm -t -i /bin/bash
+#   docker run -rm -t -i -name slc6-puppet thbe/slc6p /bin/bash
 #
 
 # Smallest base image, just to launch a container

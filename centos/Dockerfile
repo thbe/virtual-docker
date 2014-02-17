@@ -14,7 +14,7 @@
 # USAGE:
 #   wget https://raw2.github.com/thbe/virtual-docker/master/centos/Dockerfile
 #   docker build -t="thbe/centos6p" -rm .
-#   docker run -name centos6-puppet thbe/centos6p -rm -t -i /bin/bash
+#   docker run -rm -t -i -name centos6-puppet thbe/centos6p /bin/bash
 #
 
 # Smallest base image, just to launch a container

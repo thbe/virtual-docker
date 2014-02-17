@@ -14,7 +14,7 @@
 # USAGE:
 #   wget https://raw2.github.com/thbe/virtual-docker/master/fedora/Dockerfile
 #   docker build -t="thbe/fedora20p" -rm .
-#   docker run -name fedora20-puppet thbe/fedora20p -rm -t -i /bin/bash
+#   docker run -rm -t -i -name fedora20-puppet thbe/fedora20p /bin/bash
 #
 
 # Smallest base image, just to launch a container
