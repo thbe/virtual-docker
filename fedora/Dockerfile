@@ -24,4 +24,5 @@ FROM mattdm/fedora:f20
 ADD https://raw2.github.com/thbe/virtual-docker/master/scripts/puppet.sh /puppet.sh
 
 # Run prepare script
+RUN chmod 755 /puppet.sh
 RUN /puppet.sh

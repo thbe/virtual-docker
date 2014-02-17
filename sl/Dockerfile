@@ -35,4 +35,5 @@ RUN rm -f /etc/yum.repos.d/rpmforge.repo
 RUN yum --releasever=6.5 -y install sl-release
 
 # Run prepare script
+RUN chmod 755 /puppet.sh
 RUN /puppet.sh
