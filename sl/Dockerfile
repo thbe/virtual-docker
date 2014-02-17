@@ -22,18 +22,21 @@
 #   # Create a data container
 #   docker run -name sl6-puppet-test thbe/slp6 -rm -t -i /bin/bash
 #
-#MAINTAINER Thomas Bendler <project@bendler-net.de>
 
 # Smallest base image, just to launch a container
 FROM thbe/slc:6.5
 
+#MAINTAINER Thomas Bendler <project@bendler-net.de>
+
 # Create a regular user
 RUN echo 'sysadm:x:1000:1000::/home/sysadm:/bin/sh' >> /etc/passwd
 RUN echo 'sysadm:x:1000:' >> /etc/group
-
-# Create directory for that user
 RUN mkdir -p /home/sysadm
 RUN chown sysadm:sysadm /home/sysadm
+
+# Set passwords
+RUN echo "root:s3cr3t" | chpasswd
+RUN echo "sysadm:s3cr3t" | chpasswd
 
 # Remove additional repositories
 RUN rm -f /etc/yum.repos.d/slc*
@@ -46,7 +49,7 @@ RUN rm -f /etc/yum.repos.d/rpmforge.repo
 RUN yum --releasever=6.5 -y install sl-release
 
 # Add base packages
-RUN yum -y install vim-common vim-enhanced curl wget net-tools gpm-libs perl-libs
+RUN yum -y install vim-common vim-enhanced curl wget net-tools gpm-libs perl-libs tar
 
 # Add EPEL and Puppetlabs repository
 RUN rpm -Uvh http://mirror.de.leaseweb.net/epel/6/i386/epel-release-6-8.noarch.rpm
@@ -57,4 +60,4 @@ RUN yum clean all
 RUN yum -y update
 
 # Install Puppet agent
-RUN yum -y install puppet tar
+RUN yum -y install puppet
