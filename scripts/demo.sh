@@ -7,7 +7,7 @@
 yum -y install vim-common vim-enhanced curl wget net-tools gpm-libs perl-libs tar
 
 ### Prepare repositories ###
-rpm -Uvh http://mirror.de.leaseweb.net/epel/6/i386/epel-release-6-8.noarch.rpm
+rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 yum clean all && yum -y update
 
