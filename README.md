@@ -1,6 +1,8 @@
 virtual-docker
 ==============
 
+#Introduction
+
 Dockerfiles for
 
 * Scientific Linux 6
@@ -9,3 +11,7 @@ Dockerfiles for
 
 to create images with Puppet installed to be used for Puppet
 module testing.
+
+#Usage
+
+The usage for each distribution is described inside the docker file

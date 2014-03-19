@@ -10,3 +10,9 @@
 
 0.2.2 2013-12-16 thbe <project@bendler-net.de>
 * Fixed issue #2
+
+0.9.0 2014-03-19 thbe <project@bendler-net.de>
+* Swicthed to signed commits
+* Adjust calls to match new docker 0.9 version
+* Fixed typos
+* Smoke test

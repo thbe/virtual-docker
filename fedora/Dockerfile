@@ -1,7 +1,7 @@
 ### Dockerfile
 #
 # VERSION:
-#   0.5
+#   0.9
 #
 # DESCRIPTION:
 #   Create Fedora 20 with Puppet for testing
@@ -13,8 +13,8 @@
 #
 # USAGE:
 #   wget https://raw2.github.com/thbe/virtual-docker/master/fedora/Dockerfile
-#   docker build -t="thbe/fedora20p" -rm .
-#   docker run -rm -t -i -name fedora20-puppet thbe/fedora20p /bin/bash
+#   docker build -t="thbe/fedora20p" .
+#   docker run -t -i thbe/fedora20p /bin/bash
 #
 
 # Smallest base image, just to launch a container
