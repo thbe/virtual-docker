@@ -1,6 +1,5 @@
 # Puppet
 pkg/
-metadata.json
 
 # Node.js with Express and Stlyus
 public/css/*.css
@@ -44,3 +43,19 @@ Icon?
 
 # ZSH Cake plugin cache
 /.cake_task_cache
+
+# Vagrant
+.vagrant
+
+# Kodi
+cache/
+kodi-content.html
+videodb.xml
+
+# rpmbuild
+BUILD/
+BUILDROOT/
+RPMS/noarch/*.rpm
+RPMS/x86_64/*.rpm
+SRPMS/*.src.rpm
+SOURCES/*.tar.gz
