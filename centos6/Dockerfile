@@ -1,10 +1,10 @@
 ### Dockerfile
 #
 # VERSION:
-#   0.9
+#   1.0
 #
 # DESCRIPTION:
-#   Create CentOS Linux 6.5 with Puppet and EPEL for tests
+#   Create CentOS Linux 6 with Puppet and EPEL for tests
 #
 # AUTHOR:
 #   Thomas Bendler <project@bendler-net.de>
@@ -12,13 +12,13 @@
 # COMMENTS:
 #
 # USAGE:
-#   wget https://raw2.github.com/thbe/virtual-docker/master/centos/Dockerfile
-#   docker build -t="thbe/centos6p" .
-#   docker run -t -i thbe/centos6p /bin/bash
+#   wget https://raw2.github.com/thbe/virtual-docker/master/centos6/Dockerfile
+#   docker build -t="local/centos6" .
+#   docker run -t -i local/centos6 /bin/bash
 #
 
 # Smallest base image, just to launch a container
-FROM thbe/centos:6.5
+FROM centos:6
 MAINTAINER Thomas Bendler, project@bendler-net.de
 
 # Include prepare script

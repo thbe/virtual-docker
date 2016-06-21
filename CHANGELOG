@@ -1,18 +1,23 @@
-0.1.0 2013-04-11 thbe <project@bendler-net.de>
-* Initial release
-
-0.2.0 2013-08-16 thbe <project@bendler-net.de>
-* Prepare for forge
-* Documentation according to NTP module from puppetlabs
-
-0.2.1 2013-12-09 thbe <project@bendler-net.de>
-* Lower version for dependency puppetlabs/stdlib
-
-0.2.2 2013-12-16 thbe <project@bendler-net.de>
-* Fixed issue #2
+1.0.0 2016-06-21 thbe <project@bendler-net.de>
+ * Removed all instances except CentOS
+ * Switched to offical CentOS base image
+ * Update links and demo
 
 0.9.0 2014-03-19 thbe <project@bendler-net.de>
-* Swicthed to signed commits
-* Adjust calls to match new docker 0.9 version
-* Fixed typos
-* Smoke test
+ * Swicthed to signed commits
+ * Adjust calls to match new docker 0.9 version
+ * Fixed typos
+ * Smoke test
+
+0.2.2 2013-12-16 thbe <project@bendler-net.de>
+ * Fixed issue #2
+
+0.2.1 2013-12-09 thbe <project@bendler-net.de>
+ * Lower version for dependency puppetlabs/stdlib
+
+0.2.0 2013-08-16 thbe <project@bendler-net.de>
+ * Prepare for forge
+ * Documentation according to NTP module from puppetlabs
+
+0.1.0 2013-04-11 thbe <project@bendler-net.de>
+ * Initial release

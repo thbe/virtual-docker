@@ -2,14 +2,9 @@
 #
 # Simple docker demo to show possibilities
 #
-
-### Prepare base image ###
-yum -y install vim-common vim-enhanced curl wget net-tools gpm-libs perl-libs tar
-
-### Prepare repositories ###
-rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
-yum clean all && yum -y update
+# Start docker container with:
+# docker run --rm -ti -p 80:80 local/centos7 /bin/bash
+#
 
 ### Install webserver ###
 yum -y install nginx

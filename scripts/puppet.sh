@@ -20,25 +20,23 @@ fi
 yum -y install vim-common vim-enhanced curl wget net-tools gpm-libs perl-libs tar
 
 ### Prepare and install additional repositories ###
-if [ "x${DIST}" = "xfedora" ]; then
-  if [ "x${MAJORVER}" = "x20" ]; then
-    rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-fedora-20.noarch.rpm
-  fi
-fi
 if [ "x${DIST}" = "xrhel" ]; then
   if [ "x${MAJORVER}" = "x6" ]; then
-    rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-    rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+    rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+    rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
   fi
   if [ "x${MAJORVER}" = "x7" ]; then
-    rpm -Uvh http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.1.noarch.rpm
-    rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+    rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
   fi
 fi
+
+### Upgrade local image ###
 yum clean all && yum -y update
 
 ### Install puppet ###
-yum -y install puppet
+yum -y install puppet-agent
 
 ### Show result ###
-echo "Docker container prepared for Puppet ..."
+echo "Installation of Puppet and common tools finished!"
+echo "Docker container ready for action ..."
