@@ -4,16 +4,18 @@
 #   1.0
 #
 # DESCRIPTION:
-#   Create CentOS Linux 6 with Puppet and EPEL for tests
+#   Create CentOS Linux 6 docker base image with Puppet and EPEL
 #
 # AUTHOR:
 #   Thomas Bendler <project@bendler-net.de>
 #
 # COMMENTS:
 #
+# BUILD:
+#   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/centos6/Dockerfile
+#   docker build --rm -t local/centos6 .
+#
 # USAGE:
-#   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/centos6/Dockerfile
-#   docker build -t="local/centos6" .
 #   docker run --rm -ti local/centos6 /bin/bash
 #
 

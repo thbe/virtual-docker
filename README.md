@@ -1,25 +1,72 @@
-virtual-docker
-==============
+# virtual-docker
 
-#Introduction
+Virtual docker is a set of files helping to create docker images for local usage.
 
-Dockerfiles for
+## Introduction
 
-* Scientific Linux 6
+This git repository offers docker images for:
+
 * CentOS 6
-* Fedora 20
+* CentOS 7
 
-to create images with Puppet installed to be used for Puppet
-module testing.
+All base images are equipped with a current version of Puppet.
 
-#Usage
+## Usage
 
-The usage for each distribution is described inside the docker file
+### Build
 
-#Testing
+#### CentOS 6
 
-The images created by the docker files can be used for testing Puppet modules.
-To test a module, the following steps are needed (as an example):
+```bash
+wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/centos6/Dockerfile
+docker build --rm -t local/centos6 .
+```
+
+#### CentOS 7
+
+```bash
+wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/centos7/Dockerfile
+docker build --rm -t local/centos7 .
+```
+
+### Run
+
+#### Interactive usage
+
+##### CentOS 6
+
+```bash
+docker run --rm -ti local/centos6 /bin/bash
+```
+
+##### CentOS 7
+
+```bash
+docker run --rm -ti local/centos7 /bin/bash
+```
+
+#### Service usage
+
+##### CentOS 7 with NGINX
+
+This is an example to create a docker instance based on CentOS 7 with NGINX running on top.
+
+```bash
+wget https://raw.githubusercontent.com/thbe/virtual-docker/master/demo/c7-nginx/Dockerfile
+docker build --rm -t local/c7-nginx .
+docker run --rm -ti local/c7-nginx -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 nginx
+```
+
+## Testing
+
+The images can be used for interactive testing of puppet modules. As an example, to test a module, the following steps are needed:
+
+```bash
+docker run --rm -ti local/centos7 /bin/bash
+```
+
+Inside the image:
+
 ```puppet
 puppet module install thbe/ssmtp
 puppet apply -e 'include ssmtp'

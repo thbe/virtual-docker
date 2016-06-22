@@ -1,19 +1,21 @@
 ### Dockerfile
 #
 # VERSION:
-#   0.1
+#   1.0
 #
 # DESCRIPTION:
-#   Create CentOS Linux 7 with Puppet and EPEL for tests
+#   Create CentOS Linux 7 docker base image with Puppet and EPEL
 #
 # AUTHOR:
 #   Thomas Bendler <project@bendler-net.de>
 #
 # COMMENTS:
 #
+# BUILD:
+#   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/centos7/Dockerfile
+#   docker build --rm -t local/centos7 .
+#
 # USAGE:
-#   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/centos7/Dockerfile
-#   docker build -t="local/centos7" .
 #   docker run --rm -ti local/centos7 /bin/bash
 #
 
@@ -37,6 +39,7 @@ ADD https://raw.githubusercontent.com/thbe/virtual-docker/master/scripts/puppet.
 RUN chmod 755 /puppet.sh
 RUN /puppet.sh
 
+# Prepare systemd
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
 rm -f /etc/systemd/system/*.wants/*;\

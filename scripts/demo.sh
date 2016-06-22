@@ -4,8 +4,6 @@
 #
 # Start docker container with:
 # docker run --rm -ti -p 80:80 local/centos6 /bin/bash
-# or
-# docker run --rm -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 -p 80:80 local/centos7 /bin/bash
 #
 # Start demo with:
 # wget https://raw.githubusercontent.com/thbe/virtual-docker/master/scripts/demo.sh
