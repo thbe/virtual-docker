@@ -12,9 +12,9 @@
 # COMMENTS:
 #
 # USAGE:
-#   wget https://raw2.github.com/thbe/virtual-docker/master/centos6/Dockerfile
+#   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/centos6/Dockerfile
 #   docker build -t="local/centos6" .
-#   docker run -t -i local/centos6 /bin/bash
+#   docker run --rm -ti local/centos6 /bin/bash
 #
 
 # Smallest base image, just to launch a container
@@ -22,7 +22,7 @@ FROM centos:6
 MAINTAINER Thomas Bendler, project@bendler-net.de
 
 # Include prepare script
-ADD https://raw2.github.com/thbe/virtual-docker/master/scripts/puppet.sh /puppet.sh
+ADD https://raw.githubusercontent.com/thbe/virtual-docker/master/scripts/puppet.sh /puppet.sh
 
 # Run prepare script
 RUN chmod 755 /puppet.sh
