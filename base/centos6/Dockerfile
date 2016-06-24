@@ -21,11 +21,29 @@
 
 # Smallest base image, just to launch a container
 FROM centos:6
+ENV container docker
 MAINTAINER Thomas Bendler, project@bendler-net.de
 
-# Include prepare script
-ADD https://raw.githubusercontent.com/thbe/virtual-docker/master/scripts/puppet.sh /puppet.sh
+# Set locale to en_US.utf-8
+ENV LANG en_US.UTF-8
+ENV TERM xterm
 
-# Run prepare script
-RUN chmod 755 /puppet.sh
-RUN /puppet.sh
+# Add additional repositories
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
+
+# Update base image
+RUN yum clean all && yum -y update
+
+# Prepare base image with standard tools
+RUN yum -y install vim-common vim-enhanced curl wget net-tools gpm-libs perl-libs tar
+
+# Install puppet
+RUN yum -y install puppet-agent
+
+# Clean up
+RUN yum clean all
+
+# Finish build
+RUN echo "Installation of Puppet and common tools finished!"
+RUN echo "Docker container ready for action ..."

@@ -21,32 +21,29 @@
 
 # Smallest base image, just to launch a container
 FROM centos:7
+ENV container docker
 MAINTAINER Thomas Bendler, project@bendler-net.de
 
-# Set container environment
-ENV container docker
-
 # Set locale to en_US.utf-8
-RUN echo "export LANG=en_US.utf-8" > /tmp/export_LANG.sh
-ENV BASH_ENV=/tmp/export_LANG.sh \
-ENV=/tmp/export_LANG.sh \
-PROMPT_COMMAND="source /tmp/export_LANG.sh"
+ENV LANG en_US.UTF-8
+ENV TERM xterm
 
-# Include prepare script
-ADD https://raw.githubusercontent.com/thbe/virtual-docker/master/scripts/puppet.sh /puppet.sh
+# Add additional repositories
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 
-# Run prepare script
-RUN chmod 755 /puppet.sh
-RUN /puppet.sh
+# Update base image
+RUN yum clean all && yum -y update
 
-# Prepare systemd
-RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
-rm -f /lib/systemd/system/multi-user.target.wants/*;\
-rm -f /etc/systemd/system/*.wants/*;\
-rm -f /lib/systemd/system/local-fs.target.wants/*; \
-rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
-rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
-rm -f /lib/systemd/system/basic.target.wants/*;\
-rm -f /lib/systemd/system/anaconda.target.wants/*;
-VOLUME [ "/sys/fs/cgroup" ]
-CMD ["/usr/sbin/init"]
+# Prepare base image with standard tools
+RUN yum -y install vim-common vim-enhanced curl wget net-tools gpm-libs perl-libs tar
+
+# Install puppet
+RUN yum -y install puppet-agent
+
+# Clean up
+RUN yum clean all
+
+# Finish build
+RUN echo "Installation of Puppet and common tools finished!"
+RUN echo "Docker container ready for action ..."
