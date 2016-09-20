@@ -8,6 +8,7 @@ This git repository offers docker images for:
 
 * CentOS 6
 * CentOS 7
+* Ubuntu 16.04
 
 All base images are equipped with a current version of Puppet.
 
@@ -29,6 +30,13 @@ wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/centos7/D
 docker build --rm -t local/centos7 .
 ```
 
+#### Ubuntu 16.04
+
+```bash
+wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/ubuntu16.04/Dockerfile
+docker build --rm -t local/ubuntu16.04 .
+```
+
 ### Run
 
 #### Interactive usage
@@ -44,6 +52,13 @@ docker run --rm -ti local/centos6 /bin/bash
 ```bash
 docker run --rm -ti local/centos7 /bin/bash
 ```
+
+##### Ubuntu 16.04
+
+```bash
+docker run --rm -ti local/ubuntu16.04 /bin/bash
+```
+
 
 #### Service usage
 
@@ -61,11 +76,14 @@ docker run --rm -ti local/c7-nginx -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 
 
 The images can be used for interactive testing of puppet modules. As an example, to test a module, the following steps are needed:
 
+### Build and run image
 ```bash
+wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/centos7/Dockerfile
+docker build --rm -t local/centos7 .
 docker run --rm -ti local/centos7 /bin/bash
 ```
 
-Inside the image:
+### Test Puppet module within image
 
 ```puppet
 puppet module install thbe/ssmtp

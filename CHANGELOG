@@ -1,3 +1,7 @@
+1.1.0 2016-09-20 thbe <project@bendler-net.de>
+ * Add Ubuntu instance
+ * Reduce image size
+
 1.0.0 2016-06-21 thbe <project@bendler-net.de>
  * Removed all instances except CentOS
  * Switched to offical CentOS base image
