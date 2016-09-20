@@ -33,16 +33,14 @@ ADD https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb /tmp/puppetlabs
 RUN dpkg -i /tmp/puppetlabs-release-pc1-xenial.deb
 
 # Update base image
-RUN apt clean all && apt update && apt -y dist-upgrade
+RUN apt clean all
+RUN apt -y dist-upgrade && apt clean all
 
 # Prepare base image with standard tools
-RUN apt -y install vim curl wget
+RUN apt -y install vim curl wget && apt clean all
 
 # Install puppet
-RUN apt -y install puppet-agent
-
-# Clean up
-RUN apt clean all
+RUN apt -y install puppet-agent && apt clean all
 
 # Finish build
 RUN echo "Installation of Puppet and common tools finished!"

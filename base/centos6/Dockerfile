@@ -33,16 +33,15 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.
 RUN rpm -Uvh https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
 
 # Update base image
-RUN yum clean all && yum -y update
+RUN yum clean all
+RUN yum -y update && yum clean all
 
 # Prepare base image with standard tools
-RUN yum -y install vim-common vim-enhanced curl wget net-tools gpm-libs perl-libs tar
+RUN yum -y install vim-common vim-enhanced curl wget && yum clean all
+RUN yum -y install net-tools gpm-libs perl-libs tar && yum clean all
 
 # Install puppet
-RUN yum -y install puppet-agent
-
-# Clean up
-RUN yum clean all
+RUN yum -y install puppet-agent && yum clean all
 
 # Finish build
 RUN echo "Installation of Puppet and common tools finished!"
