@@ -1,0 +1,41 @@
+### Build app ###
+cd app || exit
+docker build -t app .
+cd .. || exit
+
+### Build proxy ###
+cd proxy || exit
+docker build -t proxy .
+cd .. || exit
+
+### Run app ###
+cd app || exit
+docker run -p 8080:80 app .
+cd .. || exit
+
+### Build with docker-compose ###
+docker-compose build
+
+### Start with docker-compose ###
+docker-compose up
+
+### Login to proxy ###
+docker-compose exec proxy sh
+
+### Scale with docker-compose ###
+docker-compose scale app=30
+
+### Scale with docker-compose ###
+docker-compose scale app=3
+
+### Rebuild app ###
+docker-compose up -d --no-deps --build app
+
+### Show containers ###
+docker-compose ps
+
+### Show logs ###
+docker-compose logs
+
+### Remove proxy and app ###
+docker-compose rm -f

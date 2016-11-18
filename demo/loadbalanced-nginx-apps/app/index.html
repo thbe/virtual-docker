@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to loadbalanced nginx!</title>
+  <style>
+  body {
+    width: 35em;
+    margin: 0 auto;
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+  }
+  </style>
+</head>
+<body>
+  <h1>Welcome to loadbalanced nginx!</h1>
+  <div><br/>
+    You are logged on to: <!--#echo var="HOSTNAME" --><br/>
+    <br/>
+    Your IP Address is: <!--#echo var="REMOTE_ADDR" --><br/>
+    Your browser is: <!--#echo var="HTTP_USER_AGENT" --><br/>
+    The URI of this document is: <!--#echo var="DOCUMENT_URI" --><br/>
+    Todays date (GMT)is: <!--#echo var="DATE_GMT" --><br/>
+  </div>
+
+  <p><em>Thank you for using nginx.</em></p>
+</body>
+</html>

@@ -1,51 +1,79 @@
-# Puppet
-pkg/
+### .gitignore
+#
+# Generic gitignore for my projects
+#
 
-# Node.js with Express and Stlyus
-public/css/*.css
-public/css/main/*.css
-public/css/admin/*.css
-/.monitor
-
-# Eclipse
-/.project
-/.settings
-/.buildpath
-
-# Sublime
-*.sublime-project
-*.sublime-workspace
-
-# Windows
-Thumbs.db
-
-# Ignore this in Clock Harness projects because it is created by the build system.
-/Config/vhost.conf
-
-# Vim
-.*.sw[a-z]
-*.un~i
-tags
-
-# OsX
+### Operating systems ###
+# macos
 .DS_Store
 Icon?
 ._*
 .Spotlight-V100
 .Trashes
 
+# Windows
+Thumbs.db
+
+### Editors ###
+# Vim
+.*.sw[a-z]
+*.un~i
+tags
+
+# Eclipse
+.project
+.settings
+.buildpath
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+### Programming languages ###
+# Ruby
+*.gem
+*.rbc
+.bundle
+.config
+InstalledFiles
+lib/bundler/man
+rdoc/
+spec/reports
+test/tmp
+test/version_tmp
+tmp/
+
+# Puppet
+Gemfile.lock
+.rspec_system
+coverage/
+.bundle
+spec/fixtures/modules/
+spec/fixtures/manifests/
+pkg/
+TODO
+
+### Tools ###
+# YARD
+.yardoc/
+_yardoc/
+
+# Node.js
+public/css/*.css
+public/css/main/*.css
+public/css/admin/*.css
+.monitor
+
 # nodejs npm modules
-/node_modules
+node_modules
 
 # node-cluster
-/pids
+pids
 *.sock
 
-# ZSH Cake plugin cache
-/.cake_task_cache
-
-# Vagrant
-.vagrant
+# Packer
+*.box
+packer_cache
 
 # Kodi
 cache/
@@ -59,3 +87,46 @@ RPMS/noarch/*.rpm
 RPMS/x86_64/*.rpm
 SRPMS/*.src.rpm
 SOURCES/*.tar.gz
+tmp/
+
+# ZSH Cake plugin cache
+.cake_task_cache
+
+### Virtualization ###
+# Vagrant
+.vagrant/
+centos6/local/puppet/
+!centos6/local/puppet/.gitkeep
+centos6/local/repository/
+!centos6/local/repository/.gitkeep
+centos6/local/storage/
+!centos6/local/storage/.gitkeep
+centos6/local/tmp/
+!centos6/local/tmp/.gitkeep
+
+centos7/local/puppet/
+!centos7/local/puppet/.gitkeep
+centos7/local/repository/
+!centos7/local/repository/.gitkeep
+centos7/local/storage/
+!centos7/local/storage/.gitkeep
+centos7/local/tmp/
+!centos7/local/tmp/.gitkeep
+
+sl6/local/puppet/
+!sl6/local/puppet/.gitkeep
+sl6/local/repository/
+!sl6/local/repository/.gitkeep
+sl6/local/storage/
+!sl6/local/storage/.gitkeep
+sl6/local/tmp/
+!sl6/local/tmp/.gitkeep
+
+ubuntu-14.04/local/puppet/
+!ubuntu-14.04/local/puppet/.gitkeep
+ubuntu-14.04/local/repository/
+!ubuntu-14.04/local/repository/.gitkeep
+ubuntu-14.04/local/storage/
+!ubuntu-14.04/local/storage/.gitkeep
+ubuntu-14.04/local/tmp/
+!ubuntu-14.04/local/tmp/.gitkeep
