@@ -1,0 +1,16 @@
+# Let's Chat with Docker Compose
+#
+# Usage: docker-compose up
+---
+version: '2'
+
+services:
+  app:
+    #build: app
+    ports:
+     - 80:8080
+     - 5222:5222
+    image: sdelements/lets-chat:latest
+
+  mongo:
+    image: mongo:latest
