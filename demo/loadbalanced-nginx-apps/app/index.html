@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Welcome to loadbalanced nginx!</title>
-  <style>
+  <title>Docker demonstration loadbalanced-nginx-apps</title>
+  <style type="text/css">
+  .custom-font {
+    color: white;
+    background-color: darkred;
+  }
   body {
-    width: 35em;
     margin: 0 auto;
     font-family: Tahoma, Verdana, Arial, sans-serif;
+  }
+  div {
+    margin: auto;
+    width: 50%;
+    border: 3px solid darkgreen;
+    padding: 10px;
+  }
+  h1 {
+    text-align: center;
   }
   </style>
 </head>
 <body>
-  <h1>Welcome to loadbalanced nginx!</h1>
-  <div><br/>
-    You are logged on to: <!--#echo var="HOSTNAME" --><br/>
-    <br/>
-    Your IP Address is: <!--#echo var="REMOTE_ADDR" --><br/>
-    Your browser is: <!--#echo var="HTTP_USER_AGENT" --><br/>
-    The URI of this document is: <!--#echo var="DOCUMENT_URI" --><br/>
-    Todays date (GMT)is: <!--#echo var="DATE_GMT" --><br/>
+  <h1>Welcome to the loadbalanced nginx demonstration!</h1>
+  <div><br />
+    You are logged on to node: <span class=custom-font>&nbsp;<!--#echo var="HOSTNAME" -->&nbsp;</span><br />
+    <br /><br />
+    Todays date (GMT)is: <b><!--#echo var="DATE_GMT" --></b><br />
+    Your IP Address is: <b><!--#echo var="REMOTE_ADDR" --></b><br />
+    The URI of this document is: <b><!--#echo var="DOCUMENT_URI" --></b><br /><br />
+    Your browser is: <b><!--#echo var="HTTP_USER_AGENT" --></b><br />
+    <br /><br />
+    <em>Thank you for using nginx!</em>
   </div>
-
-  <p><em>Thank you for using nginx.</em></p>
 </body>
 </html>
