@@ -1,17 +1,4 @@
-### Dockerfile
-#
-# VERSION:
-#   1.0
-#
-# DESCRIPTION:
-#   Create CentOS Linux 7 docker image with Puppet thbe-ssmtp module
-#
-# AUTHOR:
-#   Thomas Bendler <project@bendler-net.de>
-#
-# COMMENTS:
-#   You need to build base/centos7 first, see:
-#   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/centos7/Dockerfile
+FROM local/centos7
 #
 # BUILD:
 #   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/demo/c7-puppet-ssmtp/Dockerfile
@@ -21,15 +8,19 @@
 #   docker run --rm -ti local/c7-puppet-ssmtp puppet-ssmtp /bin/bash
 #
 
-# Use local centos7 build from base/centos7
-FROM local/centos7
-MAINTAINER Thomas Bendler, project@bendler-net.de
+# Set metadata
+LABEL maintainer="Thomas Bendler <project@bendler-net.de>"
+LABEL version="1.0"
+LABEL description="Create CentOS Linux 7 docker image with Puppet thbe-ssmtp module"
+
+# Set environment
+ENV container docker
+ENV LANG en_US.UTF-8
+ENV TERM xterm
 
 ### Install thbe-ssmtp ###
-RUN puppet module install thbe-ssmtp
-RUN puppet apply -e 'class { "ssmtp": }'
-
-### Show demo results ###
-RUN echo "Puppet installed ssmtp and switched the default mta:"
-RUN ls -alFh /usr/sbin/sendmail
-RUN ls -alFh /etc/alternatives/mta
+RUN puppet module install thbe-ssmtp && \
+    puppet apply -e 'class { "ssmtp": }' && \
+    echo "Puppet installed ssmtp and switched the default mta:" && \
+    ls -alFh /usr/sbin/sendmail && \
+    ls -alFh /etc/alternatives/mta

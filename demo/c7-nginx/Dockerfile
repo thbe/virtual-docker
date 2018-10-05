@@ -1,17 +1,4 @@
-### Dockerfile
-#
-# VERSION:
-#   1.0
-#
-# DESCRIPTION:
-#   Create CentOS Linux 7 docker image with NGINX
-#
-# AUTHOR:
-#   Thomas Bendler <project@bendler-net.de>
-#
-# COMMENTS:
-#   You need to build base/centos7 first, see:
-#   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/centos7/Dockerfile
+FROM local/centos7
 #
 # BUILD:
 #   wget https://raw.githubusercontent.com/thbe/virtual-docker/master/demo/c7-nginx/Dockerfile
@@ -23,9 +10,15 @@
 #   docker exec -ti <container-id> /bin/bash
 #
 
-# Use local centos7 build from base/centos7
-FROM local/centos7
-MAINTAINER Thomas Bendler, project@bendler-net.de
+# Set metadata
+LABEL maintainer="Thomas Bendler <project@bendler-net.de>"
+LABEL version="1.0"
+LABEL description="Create CentOS Linux 7 docker image with NGINX"
+
+# Set environment
+ENV container docker
+ENV LANG en_US.UTF-8
+ENV TERM xterm
 
 # Setup and prepare systemd
 RUN yum -y install sysvinit-tools initscripts systemd
@@ -40,11 +33,9 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
 # VOLUME [ "/sys/fs/cgroup" ]
 
 # Install NGINX
-RUN yum -y install nginx
-RUN systemctl enable nginx.service
-
-# Clean up
-RUN yum clean all
+RUN yum -y install nginx && \
+    systemctl enable nginx.service && \
+    yum clean all
 
 # Expose standard http port
 EXPOSE 80 443

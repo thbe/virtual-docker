@@ -1,3 +1,7 @@
+1.2.0 2018-10-05 thbe <project@bendler-net.de>
+ * Add Alpine instance
+ * Reduce image size
+
 1.1.0 2016-09-20 thbe <project@bendler-net.de>
  * Add Ubuntu instance
  * Reduce image size

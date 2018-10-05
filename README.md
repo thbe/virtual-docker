@@ -6,15 +6,23 @@ Virtual docker is a set of files helping to create docker images for local usage
 
 This git repository offers docker images for:
 
+* Alpine latest
 * CentOS 6
 * CentOS 7
 * Ubuntu 16.04
 
-All base images are equipped with a current version of Puppet.
+All base images except Alpine are equipped with a current version of Puppet.
 
 ## Usage
 
 ### Build
+
+#### Alpine latest
+
+```bash
+wget https://raw.githubusercontent.com/thbe/virtual-docker/master/base/alpine/Dockerfile
+docker build --rm -t local/alpine .
+```
 
 #### CentOS 6
 
@@ -40,6 +48,12 @@ docker build --rm -t local/ubuntu16.04 .
 ### Run
 
 #### Interactive usage
+
+##### Alpine latest
+
+```bash
+docker run --rm -ti local/alpine /bin/sh
+```
 
 ##### CentOS 6
 
