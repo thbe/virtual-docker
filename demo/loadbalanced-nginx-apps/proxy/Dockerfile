@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM nginx:alpine
 
 # Set metadata
 LABEL maintainer="Thomas Bendler <project@bendler-net.de>"
